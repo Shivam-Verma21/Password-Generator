@@ -2,3 +2,28 @@
   background-color: rgb(7, 155, 213);
   color: black;
 }
+
+@media (max-width: 460px) {
+  .sliderAndCheck {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .sliderAndCheck > div:first-child {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .sliderAndCheck > div:not(:first-child) {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .checkboxContainer {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+  }
+}

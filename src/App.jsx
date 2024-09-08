@@ -1,7 +1,7 @@
 // LEARN useEffect, useRef, useCallback with this project
 
-import { useState, useCallback, useEffect,useRef } from "react";
-import "./App.css"
+import { useState, useCallback, useEffect, useRef } from "react";
+import "./App.css";
 
 function App() {
   const [length, setLength] = useState(8);
@@ -33,29 +33,18 @@ function App() {
     passwordGenerator();
   }, [length, number, character, passwordGenerator]);
 
-  function passwordCopy(){
+  function passwordCopy() {
     // navigator.clipboard.writeText(password);
 
-    passwordRef.current?.select();  //selects the password while copying
+    passwordRef.current?.select(); //selects the password while copying
     // passwordRef.current?.setSelectionRange(0, 20);
 
-    window.navigator.clipboard.writeText(password).then(()=>{
+    window.navigator.clipboard.writeText(password).then(() => {
       setIsCopied(true);
       setTimeout(() => {
         setIsCopied(false);
       }, 1000);
-    })
-
-    // if (Notification.permission === 'granted') {
-    //   new Notification("Password copied to clipboard!!");
-    // } else if (Notification.permission !== 'denied') {
-    //   Notification.requestPermission().then(permission => {
-    //     if (permission === 'granted') {
-    //       new Notification("Password copied to clipboard!!");
-    //     }
-    //   });
-    // }
-    
+    });
   }
 
   return (
@@ -80,7 +69,7 @@ function App() {
           readOnly
           ref={passwordRef}
         />
-        <button 
+        <button
           className="outline-none bg-blue-700 text-white px-3 py-0.5 shrink-0 copy-button"
           onClick={passwordCopy}
         >
@@ -88,7 +77,7 @@ function App() {
         </button>
       </div>
 
-      <div className="flex text-sm gap-x-2">
+      <div className="flex text-sm gap-x-2 sliderAndCheck">
         <div className="flex items-center gap-x-1">
           <input
             type="range"
@@ -103,34 +92,36 @@ function App() {
           <label>Length: {length}</label>
         </div>
 
-        <div className="flex items-center gap-x-1 ml-2">
-          <input
-            type="checkbox"
-            defaultChecked={number}
-            id="numberInput"
-            className="cursor-pointer"
-            onChange={() => {
-              setNumber((prev) => !prev);
-            }}
-          />
-          <label htmlFor="numberInput" className="cursor-pointer">
-            Numbers
-          </label>
-        </div>
+        <div className="flex checkboxContainer">
+          <div className="flex items-center gap-x-1 ml-2">
+            <input
+              type="checkbox"
+              defaultChecked={number}
+              id="numberInput"
+              className="cursor-pointer"
+              onChange={() => {
+                setNumber((prev) => !prev);
+              }}
+            />
+            <label htmlFor="numberInput" className="cursor-pointer">
+              Numbers
+            </label>
+          </div>
 
-        <div className="flex items-center gap-x-1 ml-2">
-          <input
-            type="checkbox"
-            defaultChecked={character}
-            id="characterInput"
-            className="cursor-pointer"
-            onChange={() => {
-              setCharacter((prev) => !prev);
-            }}
-          />
-          <label htmlFor="characterInput" className="cursor-pointer">
-            Characters
-          </label>
+          <div className="flex items-center gap-x-1 ml-2">
+            <input
+              type="checkbox"
+              defaultChecked={character}
+              id="characterInput"
+              className="cursor-pointer"
+              onChange={() => {
+                setCharacter((prev) => !prev);
+              }}
+            />
+            <label htmlFor="characterInput" className="cursor-pointer">
+              Characters
+            </label>
+          </div>
         </div>
       </div>
     </div>
